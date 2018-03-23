@@ -1,0 +1,5 @@
+services:
+    example_server:
+        factory: ["@solfege_koa_factory", create]
+        tags:
+            - {name: solfege.koa.instance, id: example}

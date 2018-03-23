@@ -1,0 +1,17 @@
+services:
+    # Instance registry
+    solfege_koa_registry:
+        class: domain/service/KoaRegistry
+
+    # Instance factory
+    solfege_koa_factory:
+        class: domain/service/KoaFactory
+
+    # Command to list available instances
+    solfege_koa_command_list:
+        class: application/command/ListCommand
+        arguments:
+            - "@solfege_koa_registry"
+        tags:
+            - { name: solfege.console.command }
+
