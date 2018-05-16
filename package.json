@@ -1,7 +1,7 @@
 {
     "name": "solfegejs-koa",
     "description": "Bridge of KoaJS for SolfegeJS",
-    "version": "0.1.0",
+    "version": "0.1.2",
     "author": "neolao <contact@neolao.com>",
     "repository": "https://github.com/neolao/solfege-bundle-koa.git",
     "license": "MIT",
@@ -14,18 +14,15 @@
         "node": ">= 9"
     },
     "dependencies": {
-        "koa": "^2.5.0"
+        "koa": "^2.5.0",
+        "koa-bodyparser": "^4.2.0"
     },
     "devDependencies": {
         "babel-cli": "^6.7",
-        "babel-core": "^6.26",
         "babel-preset-solfege": "^1.2.1",
-        "chai": "^3.5",
-        "co-mocha": "^1.2.0",
-        "flow-bin": "^0.60.1",
-        "jsdoc": "^3.4",
-        "mocha": "^3.0",
-        "nyc": "^10.3.2",
+        "eslint": "^3.19",
+        "eslint-plugin-solfege": "^1.0",
+        "flow-bin": "^0.71.0",
         "solfegejs-application": "^3.0.1",
         "solfegejs-cli": "^4.0.2",
         "solfegejs-dependency-injection": "^2.1.6",
@@ -36,9 +33,11 @@
         "flow-stop": "flow stop",
         "flow-start": "flow start",
         "flow-restart": "flow stop; flow start",
-        "prebuild": "flow",
+        "lint": "eslint --ext .js src",
         "build": "babel --out-dir lib src --copy-files",
-        "watch": "watch 'echo \"----------\"; npm run build --silent' ./src",
+        "prebuild": "npm run lint && flow",
+        "postbuild": "echo \"\\033[42;30m          READY           \\033[0m\"",
+        "watch": "watch 'echo \"\\033[41;37m      START BUILDING      \\033[0m\"; npm run build --silent' ./src",
         "example-build": "flow; babel --out-dir example/lib example/src --copy-files",
         "example-console": "node example/lib/console.js"
     },
@@ -47,5 +46,11 @@
             "solfege"
         ],
         "comments": false
+    },
+    "eslintConfig": {
+        "extends": [
+            "eslint:recommended",
+            "plugin:solfege/recommended"
+        ]
     }
 }
