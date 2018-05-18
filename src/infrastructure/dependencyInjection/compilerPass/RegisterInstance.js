@@ -1,9 +1,9 @@
 /* @flow */
 
 /**
- * Regsiter Koa instances
+ * Register Koa instances
  */
-export default class RegisterCompilerPass
+export default class RegisterInstance
 {
     /**
      * Process the tags

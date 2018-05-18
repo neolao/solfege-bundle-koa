@@ -1,4 +1,5 @@
 /* @flow */
+import type {MiddlewareBuilderInterface} from "../model/MiddlewareBuilderInterface"
 
 /**
  * Register KoaJS instances
@@ -26,7 +27,9 @@ export default class KoaRegistry
      */
     addInstance(id:string, instance:any):void
     {
-        this.instances.set(id, instance);
+        if (!this.instances.has(id)) {
+            this.instances.set(id, instance);
+        }
     }
 
     /**
@@ -52,5 +55,20 @@ export default class KoaRegistry
         }
 
         return null;
+    }
+
+    addMiddleware(instanceId:string, middleware:any):void
+    {
+        const instance = this.getInstanceById(instanceId);
+
+        instance.use(middleware);
+    }
+
+    addMiddlewareBuilder(instanceId:string, builder:MiddlewareBuilderInterface):void
+    {
+        const middlewares = builder.build();
+        for (let middleware of middlewares) {
+            this.addMiddleware(instanceId, middleware);
+        }
     }
 }

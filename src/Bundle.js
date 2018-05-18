@@ -1,6 +1,7 @@
 /* @flow */
 import type {BundleInterface} from "solfegejs-application/src/BundleInterface"
-import RegisterCompilerPass from "./infrastructure/dependencyInjection/RegisterCompilerPass"
+import RegisterInstance from "./infrastructure/dependencyInjection/compilerPass/RegisterInstance"
+import UseMiddleware from "./infrastructure/dependencyInjection/compilerPass/UseMiddleware"
 import type {ContainerConfiguratorBundleInterface, ContainerInterface} from "solfegejs-dependency-injection/interface"
 
 /**
@@ -25,6 +26,7 @@ export default class Bundle implements BundleInterface, ContainerConfiguratorBun
      */
     configureContainer(container:ContainerInterface):void | Promise<void>
     {
-        container.addCompilerPass(new RegisterCompilerPass());
+        container.addCompilerPass(new RegisterInstance());
+        container.addCompilerPass(new UseMiddleware());
     }
 }

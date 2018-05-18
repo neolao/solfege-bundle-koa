@@ -15,8 +15,8 @@ services:
         tags:
             - { name: solfege.console.command }
 
-    solfege_koa_middleware_builder:
-        class: domain/service/MiddlewareBuilder
+    solfege_koa_middleware_router_builder:
+        class: domain/middleware/RouterBuilder
 
-    solfege_koa_bodyparser:
-        factory: ["@solfege_koa_middleware_builder", buildBodyParser]
+    solfege_koa_middleware_bodyparser:
+        class: "koa-bodyparser"
