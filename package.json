@@ -3,7 +3,7 @@
     "description": "Bridge of KoaJS for SolfegeJS",
     "version": "0.1.3",
     "author": "neolao <contact@neolao.com>",
-    "repository": "https://github.com/neolao/solfege-bundle-koa.git",
+    "repository": "https://github.com/solfegejs/koa.git",
     "license": "MIT",
     "files": [
         "lib",
@@ -14,8 +14,9 @@
         "node": ">= 9"
     },
     "dependencies": {
+        "config-yaml": "^1.1.0",
         "koa": "^2.5.1",
-        "koa-bodyparser": "^4.2.0",
+        "koa-bodyparser": "^4.2.1",
         "koa-router": "^7.4.0"
     },
     "devDependencies": {
@@ -26,7 +27,7 @@
         "flow-bin": "^0.71.0",
         "solfegejs-application": "^3.0.1",
         "solfegejs-cli": "^4.0.2",
-        "solfegejs-dependency-injection": "^2.1.6",
+        "solfegejs-dependency-injection": "^2.2.6",
         "watch": "^1.0.2"
     },
     "scripts": {

@@ -64,9 +64,10 @@ export default class KoaRegistry
         instance.use(middleware);
     }
 
-    addMiddlewareBuilder(instanceId:string, builder:MiddlewareBuilderInterface):void
+    async addMiddlewareBuilder(instanceId:string, builder:MiddlewareBuilderInterface):void | Promise<void>
     {
-        const middlewares = builder.build();
+        let middlewares = await builder.build();
+
         for (let middleware of middlewares) {
             this.addMiddleware(instanceId, middleware);
         }

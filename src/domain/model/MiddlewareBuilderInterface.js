@@ -5,6 +5,6 @@
  */
 export interface MiddlewareBuilderInterface
 {
-    build():Array<Function>;
+    build():Promise<Array<Function>>;
 }
 
